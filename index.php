@@ -4,9 +4,10 @@ class Movie {
     public $actor;
     public $year;
     
-    function __construct(String $_title, String $_actor){
+    function __construct(String $_title, String $_actor, Int $_year){
         $this->title = $_title;
         $this->actor = $_actor;
+        $this->year = $_year;
     }
 
     public function getTitle(){
@@ -15,10 +16,13 @@ class Movie {
     public function getActor(){
         return $this->actor;
     }
+    public function getYear(){
+        return $this->year;
+    }
 }
 
-$alien = new Movie('Alien', 'Bolaji Badejo');
-$lucy = new Movie('Lucy', 'Scarlett Johansson');
+$alien = new Movie('Alien', 'Bolaji Badejo', '1988');
+$lucy = new Movie('Lucy', 'Scarlett Johansson', '2002');
 
 ?>
 <!DOCTYPE html>
@@ -33,12 +37,12 @@ $lucy = new Movie('Lucy', 'Scarlett Johansson');
 <div>
     <p>
         <?php 
-           echo $alien->getTitle(), "  --  ", $alien->getActor();
+           echo $alien->getTitle(), "  --  ", $alien->getActor(), "  --  ", $alien->getYear();
         ?>
     </p>
     <p>
         <?php 
-           echo $lucy->getTitle(), "  --  ", $lucy->getActor();
+           echo $lucy->getTitle(), "  --  ", $lucy->getActor(), "  --  ", $lucy->getYear();
         ?>
     </p>
 </div>
