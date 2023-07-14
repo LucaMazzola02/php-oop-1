@@ -1,51 +1,35 @@
 <?php
-class Movie {
-    public $title;
-    public $actor;
-    public $year;
-    
-    function __construct(String $_title, String $_actor, Int $_year){
-        $this->title = $_title;
-        $this->actor = $_actor;
-        $this->year = $_year;
-    }
+    include_once __DIR__ . '/classes/Movie.php';
 
-    public function getTitle(){
-        return $this->title;
-    }
-    public function getActor(){
-        return $this->actor;
-    }
-    public function getYear(){
-        return $this->year;
-    }
-}
+    $movies = [
+        new Movie('Alien', 'Bolaji Badejo', 'Il film racconta in flashback la vita di Salvatore, un regista di successo ma intimamente infelice, che non è mai ritornato al paese siciliano in cui è cresciuto ed ha vissuto l\'unica vera storia d\'amore della sua vita.', 1988, ['drama', 'cult', 'italian']),
 
-$alien = new Movie('Alien', 'Bolaji Badejo', '1988');
-$lucy = new Movie('Lucy', 'Scarlett Johansson', '2002');
+        new Movie('Lucy', 'Scarlett Johansson', 'A Los Angeles giungono due figure dall\'anno 2029, un Terminator, cyborg assassino dalle fattezze umane, e un soldato umano chiamato Kyle Reese, entrambi alla ricerca di una mite ragazza chiamata Sarah Connor. ', 2002, ['action', 'cult'])
+    ];
 
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PHP-OOP-1</title>
+    <title>PHP OOP Movie</title>
 </head>
 <body>
-
-<div>
-    <p>
-        <?php 
-           echo $alien->getTitle(), "  --  ", $alien->getActor(), "  --  ", $alien->getYear();
-        ?>
-    </p>
-    <p>
-        <?php 
-           echo $lucy->getTitle(), "  --  ", $lucy->getActor(), "  --  ", $lucy->getYear();
-        ?>
-    </p>
-</div>
-    
+    <h1>
+        PHP Movie
+    </h1>
+    <ul>
+        <?php foreach ($movies as $movie) { ?>
+            <li>
+                <?php echo "$movie->title - $movie->year - $movie->director <br>";
+                    foreach ($movie->genres as $genre) {
+                        echo "$genre    ";
+                    }
+                echo "<br> $movie->synopsis" ;?>
+            </li>
+        <?php } ?>
+    </ul>
 </body>
 </html>
